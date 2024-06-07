@@ -1,0 +1,42 @@
+/* CartItem.css */
+.cart-item-card {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+.item-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 中心对齐所有子项 */
+    width: 100%;
+}
+
+.item-info {
+    text-align: center;  /* 中心对齐文本 */
+    width: 100%;         /* 确保信息区域占满整个宽度 */
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-price {
+    color: #FF4747;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 确保按钮组在其容器中居中 */
+}
+
+.count {
+    margin: 0 10px;
+    font-size: 16px;
+}
+
