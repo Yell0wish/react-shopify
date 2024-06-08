@@ -132,6 +132,17 @@ class CartService {
         }
         return 0;
     }
+
+    clearCart(user_id) {
+        let userCart = this.list.find(cart => cart.user_id === user_id);
+        if (userCart) {
+            userCart.goods_list = [];
+            this.saveList();
+            return true; // 表示清空购物车成功
+        }
+        return false; // 表示清空购物车失败
+    
+    }
 }
 
 const cartService = new CartService();

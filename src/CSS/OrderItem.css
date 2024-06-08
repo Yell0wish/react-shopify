@@ -1,0 +1,62 @@
+.order-item-card {
+    box-shadow: none;
+    margin-bottom: 0px;
+    padding: 0; /* 移除padding */
+    margin-top: 0;
+    padding: 0;
+}
+
+.adm-card-body {
+    padding: 0; /* 移除padding */
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.item-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0; /* 移除padding */
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between; /* 在一行中分布 */
+    width: 100%;
+    align-items: center;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 靠左对齐 */
+}
+
+.item-name {
+    margin-left: 15px;
+    font-size: 14px; /* 调整字体大小 */
+    font-weight: bold;
+    color: #333;
+}
+
+.item-price {
+    color: #FF4747;
+    font-size: 16px; /* 调整字体大小 */
+    font-weight: bold;
+    margin: 4px 0; /* 调整margin */
+    align-self: flex-end; /* 靠右对齐 */
+    margin-right: 10px;
+}
+
+.quantity-display {
+    display: flex;
+    align-items: center;
+}
+
+.count {
+    margin: 0; /* 调整margin */
+    margin-left: 15px;
+    font-size: 14px; /* 调整字体大小 */
+}

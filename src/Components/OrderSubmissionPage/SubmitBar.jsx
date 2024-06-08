@@ -1,18 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import cartService from '../../Services/CartService';
+import orderService from '../../Services/OrderService';
 
-const CheckoutBar = ({ totalPrice }) => {
+const SubmitBar = ({ totalPrice, acutalPrice }) => {
     const navigate = useNavigate();
 
     const handleCheckout = () => {
-        if (totalPrice === 0) return;
-        navigate('/order-submit/1');
+        // 创建订单
+        // addOrder(user_id, goods_list, price, actual_price) {
+        const order_id = orderService.addOrder(1, cartService.getList(1), totalPrice, acutalPrice);
+
+        // 清空购物车
+        cartService.clearCart(1);
+        navigate('/order/' + order_id); // 导航到订单提交页面
     };
 
     return (
         <div style={{ 
             position: 'fixed',
-            bottom: '50px', // 设置为与 BottomNavBar 高度一致的值
+            bottom: '0px', // 设置为与 BottomNavBar 高度一致的值
             left: 0,
             width: '100%',
             maxWidth: '100%', // 确保宽度不会超过屏幕
@@ -26,9 +33,9 @@ const CheckoutBar = ({ totalPrice }) => {
             zIndex: 1000, // 确保在 BottomNavBar 之上
         }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ fontSize: '18px', color: '#333' }}>总计: </span>
+                <span style={{ fontSize: '18px', color: '#333' }}></span>
                 <span style={{ fontSize: '20px', color: '#FF4747', fontWeight: 'bold', marginLeft: '5px' }}>
-                    ¥{totalPrice.toFixed(2)}
+                    ¥{acutalPrice.toFixed(2)}
                 </span>
             </div>
             <button 
@@ -41,10 +48,10 @@ const CheckoutBar = ({ totalPrice }) => {
                     borderRadius: '5px' 
                 }}
             >
-                结算
+                提交订单
             </button>
         </div>
     );
 };
 
-export default CheckoutBar;
+export default SubmitBar;

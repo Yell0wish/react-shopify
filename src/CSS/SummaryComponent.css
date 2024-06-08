@@ -1,0 +1,51 @@
+.summary-component-card {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.summary-component-card .adm-list-item {
+    font-size: 16px;
+    text-align: left; /* 确保文本靠左对齐 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-component-card .adm-list-item .adm-list-item-content {
+    color: #333;
+    flex-grow: 1;
+}
+
+.summary-component-card .adm-list-item .adm-list-item-extra {
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.summary-component-card .adm-list-item:last-child .adm-list-item-extra {
+    color: #FF4747;
+}
+
+.align-left .adm-list-item-content {
+    text-align: left; /* 确保文本靠左对齐 */
+}
+
+.align-left .adm-list-item-extra {
+    text-align: right; /* 确保右边文本靠右对齐 */
+}
+
+.red-text {
+    color: #FF4747; /* 红色文本 */
+}
+
+.coupon-selector {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.align-right {
+    text-align: right; /* 确保额外信息靠右对齐 */
+    width: 100%;
+}

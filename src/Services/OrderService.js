@@ -40,6 +40,21 @@ class OrderService {
     saveList() {
         localStorage.setItem('orderList', JSON.stringify(this.list));
     }
+
+    addOrder(user_id, goods_list, price, actual_price) {
+        // id 和时间有关 再加上用户id
+        let id = new Date().getTime().toString() + user_id;
+        this.list.push({
+            id: id,
+            user_id: user_id,
+            state: 0,
+            goods_list: goods_list,
+            price: price,
+            actual_price: actual_price
+        });
+        this.saveList();
+        return id;
+    }
 }
 
 const orderService = new OrderService();
