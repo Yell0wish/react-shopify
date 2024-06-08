@@ -3,13 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import cartService from '../../Services/CartService';
 import orderService from '../../Services/OrderService';
 
-const SubmitBar = ({ totalPrice, acutalPrice }) => {
+const SubmitBar = ({ totalPrice, acutalPrice, selectedAddress }) => {
     const navigate = useNavigate();
 
     const handleCheckout = () => {
+        if (totalPrice <= 0) return;
+        if (!selectedAddress) {
+            alert('请选择一个地址');
+            return;
+        }
+
         // 创建订单
-        // addOrder(user_id, goods_list, price, actual_price) {
-        const order_id = orderService.addOrder(1, cartService.getList(1), totalPrice, acutalPrice);
+        // addOrder(user_id, goods_list, price, actual_price, address) {
+        const order_id = orderService.addOrder(1, cartService.getGoodList(1), totalPrice, acutalPrice, selectedAddress);
 
         // 清空购物车
         cartService.clearCart(1);

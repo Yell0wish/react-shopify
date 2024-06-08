@@ -48,6 +48,14 @@ class CartService {
         return this.list;
     }
 
+    getGoodList(user_id) {
+        let userCart = this.list.find(cart => cart.user_id === user_id);
+        if (userCart) {
+            return userCart.goods_list;
+        }
+        return [];
+    }
+
     saveList() {
         localStorage.setItem('cartList', JSON.stringify(this.list));
     }

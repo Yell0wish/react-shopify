@@ -3,7 +3,7 @@ import { List, Modal, Space } from 'antd-mobile';
 import { EditFill, CheckCircleFill } from 'antd-mobile-icons';
 import '../../CSS/AddressSelector.css';
 
-function AddressSelector({ addresses }) {
+function AddressSelector({ addresses, onSelectAddress }) {
   const [visible, setVisible] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(addresses[0]);
 
@@ -12,6 +12,7 @@ function AddressSelector({ addresses }) {
   const handleSelect = (address) => {
     setSelectedAddress(address);
     closeModal();
+    onSelectAddress(address); // 回调传递所选地址
   };
 
   return (

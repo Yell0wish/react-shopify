@@ -1,0 +1,36 @@
+.order-details {
+    padding: 0px;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.order-summary {
+    display: flex;
+    justify-content: flex-end; /* 靠右对齐 */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.order-price {
+    font-size: 18px;
+    color: #333; /* 使用黑色 */
+}
+
+.order-info, .address-info {
+    margin-top: 10px;
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.label {
+    color: #999;
+    margin-right: 10px;
+}
+
+#minus {
+    color: red;
+}

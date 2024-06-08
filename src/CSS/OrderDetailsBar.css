@@ -1,0 +1,65 @@
+.order-details-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.small-button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.large-button {
+    padding: 10px 30px;
+    background-color: #FF4747;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.grey-button {
+    background-color: #999;
+}
+
+.red-button {
+    background-color: #FF4747;
+    color: white;
+}
+
+.right-button {
+    margin-left: auto;
+}
+
+.cancelled-text {
+    font-size: 15px;
+    color: #999;
+    margin-left: 20px;
+}
+
+.status-text {
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.paid-status {
+    color: #4CAF50; /* 绿色 */
+}
+
+.shipped-status {
+    color: #FF9800; /* 橙色 */
+}

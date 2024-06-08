@@ -10,6 +10,7 @@ import SubmitBar from '../Components/OrderSubmissionPage/SubmitBar';
 const OrderSubmissionPage = () => {
     const [cartItems, setCartItems] = useState([]); // 状态用于存储购物车商品列表
     const [totalPrice, setTotalPrice] = useState(0); // 状态用于存储总价
+    const [selectedAddress, setSelectedAddress] = useState(null); // 状态用于存储所选地址
 
     const shippingFee = 0.00;
     const discount = 50.00;
@@ -22,6 +23,12 @@ const OrderSubmissionPage = () => {
         const items = getFullCartDetails();
         setCartItems(items);
         updateTotalPrice(items);
+
+        // 获取默认地址
+        const addresses = userService.getAddresses();
+        if (addresses.length > 0) {
+            setSelectedAddress(addresses[0]);
+        }
     }, []); // 空依赖数组表示仅在组件挂载时执行
 
     useEffect(() => {
@@ -41,7 +48,7 @@ const OrderSubmissionPage = () => {
     return (
         <div style={{ paddingBottom: '60px', overflowY: 'auto' }}>
             <h1 style={{ margin: 5 }}>订单</h1>
-            <AddressSelector addresses={userService.getAddresses()} />
+            <AddressSelector addresses={userService.getAddresses()} onSelectAddress={setSelectedAddress} />
             <Card style={{ boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)', paddingTop: 8, paddingBottom: 10 }}>
                 {cartItems.map((good, index) => (
                     <OrderItem key={index} good={good} />
@@ -55,7 +62,7 @@ const OrderSubmissionPage = () => {
                 finalAmount={finalAmount}
                 onCouponSelect={handleCouponSelect} // 传递选择优惠券的处理函数
             />
-            <SubmitBar acutalPrice={finalAmount} totalPrice={totalPrice} />
+            <SubmitBar acutalPrice={finalAmount} totalPrice={totalPrice} selectedAddress={selectedAddress} />
         </div>
     );
 };
