@@ -1,7 +1,7 @@
 const defaultList = [
     {
         id: 1,
-        name: 'Apple',
+        name: '烟台苹果',
         price: 99,
         category: 'fruit',
         imgs: [
@@ -11,7 +11,7 @@ const defaultList = [
     },
     {
         id: 2,
-        name: 'Banana',
+        name: '高山甜香蕉',
         price: 49,
         category: 'fruit',
         imgs: [
@@ -20,7 +20,7 @@ const defaultList = [
     },
     {
         id: 3,
-        name: 'Orange',
+        name: '沃柑',
         price: 69,
         category: 'fruit',
         imgs: [
@@ -29,7 +29,7 @@ const defaultList = [
     },
     {
         id: 4,
-        name: 'Pineapple',
+        name: '中山神湾小菠萝',
         price: 89,
         category: 'fruit',
         imgs: [

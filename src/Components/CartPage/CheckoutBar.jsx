@@ -1,6 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutBar = ({ totalPrice }) => {
+    const navigate = useNavigate();
+
+    const handleCheckout = () => {
+        navigate('/order-submit/1');
+    };
+
     return (
         <div style={{ 
             position: 'fixed',
@@ -23,13 +30,16 @@ const CheckoutBar = ({ totalPrice }) => {
                     ¥{totalPrice.toFixed(2)}
                 </span>
             </div>
-            <button style={{ 
-                padding: '10px 20px', 
-                backgroundColor: '#FF4747', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '5px' 
-            }}>
+            <button 
+                onClick={handleCheckout}
+                style={{ 
+                    padding: '10px 20px', 
+                    backgroundColor: '#FF4747', 
+                    color: 'white', 
+                    border: 'none', 
+                    borderRadius: '5px' 
+                }}
+            >
                 结算
             </button>
         </div>

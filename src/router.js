@@ -6,6 +6,7 @@ import MyPage from "./Pages/MyPage";
 import CartPage from "./Pages/CartPage";
 import CategoryPage from "./Pages/CategoryPage";
 import GoodPage from "./Pages/GoodPage";
+import OrderSubmissionPage from "./Pages/OrderSubmissionPage";
 
 const router = createBrowserRouter([
     { 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "good/:id",
                 element: <GoodPage />,
+            },
+            {
+                path: "order-submit/:cart_id",
+                element: <OrderSubmissionPage />,
             }
         ],
     },

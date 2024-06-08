@@ -7,9 +7,14 @@ const defaultUser =
         role : 'admin',
         addresses : [
             {
-                name : 'zcy',
+                name : '周书扬',
                 phone : '12345678901',
-                address : 'Beijing Jiaotong University'
+                address : '北京交通大学'
+            },
+            {
+                name: '张昌钰',
+                phone: '010-12345678',
+                address: '北京大学'
             }
         ]
 
@@ -38,6 +43,10 @@ class UserService {
 
     saveUser() {
         localStorage.setItem('user', JSON.stringify(this.user));
+    }
+
+    getAddresses() {
+        return this.user.addresses;
     }
 }
 

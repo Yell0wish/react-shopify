@@ -1,0 +1,69 @@
+/* AddressSelector.css */
+.address-item {
+    padding: 8px; /* 减少 padding */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px; /* 减少 margin */
+  }
+  
+  .address-name {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .address-phone {
+    font-size: 14px;
+    color: #888;
+    margin-left: 16px; /* 添加 margin-left 以间隔姓名和电话 */
+  }
+  
+  .address-details {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    display: block; /* 确保地址独占一行 */
+  }
+  
+  .name-phone {
+    display: flex;
+    justify-content: space-between; /* 使姓名和电话在同一行 */
+  }
+  
+  .edit-icon {
+    color: #1677ff;
+    font-size: 16px; /* 调整图标大小 */
+  }
+  
+  .ant-list-item-selected {
+    border-left: 4px solid #1677ff;
+  }
+  
+  .ant-modal-title {
+    font-size: 16px; /* 减小字体大小 */
+    font-weight: bold;
+  }
+  
+  .ant-modal-content {
+    padding: 0 8px; /* 减少 padding */
+  }
+  
+  .modal-address-item {
+    padding: 8px; /* 减少 padding */
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .modal-address-item:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  
+  .ant-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .ant-modal-footer button {
+    margin-left: 8px;
+  }
+  
