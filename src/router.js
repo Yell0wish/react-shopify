@@ -9,6 +9,8 @@ import GoodPage from "./Pages/GoodPage";
 import OrderSubmissionPage from "./Pages/OrderSubmissionPage";
 import OrderDetailsPage from "./Pages/OrderDetailsPage";
 import PayPage from "./Pages/PayPage";
+import AddressPage from "./Pages/AddressPage";
+import OrdersPage from "./Pages/OrdersPage";
 
 
 const router = createBrowserRouter([
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
             {
                 path: "pay/:order_id",
                 element: <PayPage />
+            },
+            {
+                path: "address-management",
+                element: <AddressPage />
+            },
+            {
+                path: "orders/:state",
+                element: <OrdersPage />
             }
         ],
     },

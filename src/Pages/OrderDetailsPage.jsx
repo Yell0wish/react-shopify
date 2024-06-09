@@ -3,7 +3,7 @@ import OrderItemOfDetail from "../Components/OrderDetailsPage/OrderItemOfDetail"
 import { useParams } from "react-router";
 import orderService from "../Services/OrderService";
 import { getCustomCartDetails } from "../Utils/OrderUtils";
-import { Card } from "antd-mobile";
+import { Card, NavBar } from "antd-mobile";
 import OrderDetails from "../Components/OrderDetailsPage/OrderDetails";
 import OrderDetailsBar from "../Components/OrderDetailsPage/OrderDetailsBar";
 
@@ -21,7 +21,7 @@ export default function OrderDetailsPage() {
 
     return (
         <div style={{paddingBottom: 80}}> 
-        <h1>订单详情</h1>
+        <NavBar back={null}>订单详情</NavBar>
         <Card style={{ boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)', paddingTop: 8, paddingBottom: 10 }}>
             {orderItems.map((good, index) => (
                 <OrderItemOfDetail key={index} good={good} />
