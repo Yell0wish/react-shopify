@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.adm-tab-bar-item-active  {
+  color: pink !important;
+}
+.adm-side-bar-item-active{
+  color: pink !important;
+}
+.adm-side-bar-item-highlight {
+  background-color: pink !important;
+}

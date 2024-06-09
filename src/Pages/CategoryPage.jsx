@@ -1,39 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomNavBar from "../Components/BottomNavBar";
 import '../CSS/CategoryPage.css'; // 导入CSS文件进行样式调整
 import { SideBar } from 'antd-mobile';
-
-const categories = [
-    { name: "服装", subcategories: [{ name: "衣服", icon: "https://img14.360buyimg.com/n1/s350x467_jfs/t1/107978/16/47605/138681/65d55fd2F1edfe3e6/6f63ec3676b160ee.jpg!cc_350x467.avif", subcategory_id: 1 }, { name: "裤子", icon: "https://img1.baidu.com/it/u=2299726872,451373215&fm=253&fmt=auto&app=120&f=JPEG?w=332&h=332", subcategory_id: 2 }, { name: "其它", icon: "https://img0.baidu.com/it/u=104434700,4195059452&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500", subcategory_id: 3 }] },
-    { name: "手机数码", subcategories: [{ name: "电子产品", icon: "https://img2.baidu.com/it/u=4216023735,3415378455&fm=253&fmt=auto&app=120&f=JPEG?w=711&h=400", subcategory_id: 4 }] },
-    { name: "家用电器", subcategories: [{ name: "家用电器", icon: "https://img2.baidu.com/it/u=303269828,3123715043&fm=253&fmt=auto&app=138&f=JPEG?w=610&h=500", subcategory_id: 5 }] },
-    { name: "家具家装", subcategories: [
-        { name: "厨房卫浴", icon: "https://img11.360buyimg.com/n1/jfs/t1/194220/1/34961/91292/64c0c7a2F14bee71d/e6235b11b2d8ba4d.jpg.avif", subcategory_id: 6 },
-        { name: "灯饰照明", icon: "https://imgservice.suning.cn/uimg1/b2c/image/9nfhMWrg9HgP8LeKd5KPzQ.jpg_800w_800h_4e", subcategory_id: 7 },
-        { name: "五金工具", icon: "https://tgi1.jia.com/120/389/20389460.jpg", subcategory_id: 8 },
-        { name: "卧室家具", icon: "https://img0.baidu.com/it/u=4124407789,2714782126&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067", subcategory_id: 9 },
-        { name: "客厅家具", icon: "https://img2.baidu.com/it/u=3589641038,3882215712&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1066", subcategory_id: 10 }
-    ] },
-    { name: "汽车用品", subcategories: [{ name: "汽车用品", icon: "https://img2.baidu.com/it/u=1367108174,2831907733&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=749", subcategory_id: 11 }] },
-    { name: "电脑办公", subcategories: [{ name: "电脑办公", icon: "https://img1.baidu.com/it/u=611301423,1997745688&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300", subcategory_id: 12 }] },
-    { name: "其它", subcategories: [{ name: "其它", icon: "https://img12.360buyimg.com/n7/jfs/t1/199128/20/29240/95213/636e75c8E97ccc2c5/7f693f555295f651.jpg.avif", subcategory_id: 13 }] }
-];
+import { getCategoryList } from "../Utils/CategoryUtils";
+import categoryService from "../Services/CategoryService";
 
 export default function CategoryPage() {
-    const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+    const categories = getCategoryList()
+    const [selectedCategory, setSelectedCategory] = useState();
     const navigate = useNavigate();
-
+    
     const handleSubcategoryClick = (subcategory_id) => {
+        categoryService.setCurrentSubcategoryId(subcategory_id)
+        categoryService.setCurrentCategoryId(selectedCategory.id)
+        
         navigate(`/subcategory/${subcategory_id}`);
     };
+    useEffect(() => {
+        const selectedCategoryId = categoryService.getCurrentCategoryId()
+        console.log(selectedCategoryId)
+        for(let category of categoryService.getList()) {
+            if (category.id === selectedCategoryId) {
+                setSelectedCategory(category)
+                break
+            }
 
+        }
+    }, []);
+    
+    useEffect(() => {
+        if (selectedCategory) {
+            categoryService.setCurrentCategoryId(selectedCategory.id);
+        }
+    }, [selectedCategory]);
+    // 空依赖数组表示仅在组件挂载时执行
+    // useEffect(()=>{
+    //     categoryService.setCurrentCategoryId(selectedCategory.id)
+    //     console.log(categoryService.getCurrentCategoryId())
+    // }, [selectedCategory])
     return (
         <div className="category-page">
             <div className="left-panel">
                 <SideBar
-                    activeKey={selectedCategory.name}
-                    onChange={(key) => setSelectedCategory(categories.find(category => category.name === key))}
+                    activeKey={selectedCategory?selectedCategory.name:""}
+                    onChange={ (key) => {
+                            setSelectedCategory(categories.find(category => category.name === key))
+                        }
+                    }
                 >
                     {categories.map((category) => (
                         <SideBar.Item key={category.name} title={category.name} />
@@ -42,7 +56,7 @@ export default function CategoryPage() {
             </div>
             <div className="right-panel">
                 <div className="subcategory-grid">
-                    {selectedCategory.subcategories.map((subcategory, index) => (
+                    {selectedCategory?.subcategories.map((subcategory, index) => (
                         <div key={index} className="subcategory-item" onClick={() => handleSubcategoryClick(subcategory.subcategory_id)}>
                             <img src={subcategory.icon} alt={subcategory.name} className="subcategory-image" />
                             <span>{subcategory.name}</span>

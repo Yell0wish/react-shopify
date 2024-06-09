@@ -4,8 +4,6 @@ import goodService from "../Services/GoodService";
 function getFullCartDetails() {
     const cartList = cartService.getList(); // 获取当前购物车列表
     const goodList = goodService.getList(); // 获取当前商品列表
-    console.log(cartList)
-    console.log(goodList)
     // 使用 map 和 find 来构建新的数组
     return cartList.flatMap(cart => 
         cart.goods_list.map(cartItem => {

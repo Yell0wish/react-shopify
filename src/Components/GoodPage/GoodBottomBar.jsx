@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TabBar } from 'antd-mobile';
+import { TabBar,Button } from 'antd-mobile';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AppOutline, ShopbagOutline, UnorderedListOutline, UserOutline } from 'antd-mobile-icons';
 
@@ -30,7 +30,7 @@ const tabItems = [
     }
 ];
 
-function BottomNavBar() {
+function GoodBottomBar() {
     const navigate = useNavigate();
     const location = useLocation(); 
     const [selectedTab, setSelectedTab] = useState('home');
@@ -43,23 +43,29 @@ function BottomNavBar() {
     }, [location.pathname]); 
 
     return (
-        <TabBar
-            activeKey={selectedTab}
-            onChange={(key) => {
-                const item = tabItems.find(item => item.key === key);
-                setSelectedTab(key);
-                navigate(item.path);
-            }}
-            style={{ position: 'fixed', width: '100%', bottom: 0, backgroundColor: '#FFFFFF', color:"pink !important" }}>
-            {tabItems.map(item => (
-                <TabBar.Item
-                    key={item.key}
-                    icon={item.icon}
-                    title={item.title}
-                />
-            ))}
-        </TabBar>
+        <div style={{ 
+            position: 'fixed',
+            bottom: '0px',
+            left: 0,
+            width: '100%',
+            maxWidth: '100%',
+            boxSizing: 'border-box', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            padding: '10px 20px', 
+            background: 'white', 
+            boxShadow: '0 -2px 10px rgba(0,0,0,0.1)',
+            zIndex: 1000, 
+        }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ fontSize: '20px', color: '#FF4747', fontWeight: 'bold', marginLeft: '5px' }}>
+                    
+                </span>
+            </div>
+            <Button color='primary' style={{backgroundColor:"pink", border:"none"}}>加入购物车</Button>
+        </div>
     );
 }
 
-export default BottomNavBar;
+export default GoodBottomBar;
