@@ -48,14 +48,6 @@ class CartService {
         return this.list;
     }
 
-    getGoodList(user_id) {
-        let userCart = this.list.find(cart => cart.user_id === user_id);
-        if (userCart) {
-            return userCart.goods_list;
-        }
-        return [];
-    }
-
     saveList() {
         localStorage.setItem('cartList', JSON.stringify(this.list));
     }
@@ -100,7 +92,10 @@ class CartService {
 
     updateCount(user_id, good_id, count) {
         // 查找对应用户的购物车
+        console.log(this.list);
+        console.log(user_id, good_id, count)
         let userCart = this.list.find(cart => cart.user_id === user_id);
+        console.log(userCart);
         if (userCart) {
             // 查找购物车中是否已有该商品
             let existingGood = userCart.goods_list.find(item => item.good_id === good_id);
@@ -139,17 +134,6 @@ class CartService {
             return userCart.goods_list.reduce((total, item) => total + item.goods_price * item.count, 0);
         }
         return 0;
-    }
-
-    clearCart(user_id) {
-        let userCart = this.list.find(cart => cart.user_id === user_id);
-        if (userCart) {
-            userCart.goods_list = [];
-            this.saveList();
-            return true; // 表示清空购物车成功
-        }
-        return false; // 表示清空购物车失败
-    
     }
 }
 
