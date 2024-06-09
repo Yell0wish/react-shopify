@@ -20,7 +20,7 @@ export default function OrderDetailsPage() {
     }, [order.goods_list]); // 空依赖数组表示仅在组件挂载时执行
 
     return (
-        <div>
+        <div style={{paddingBottom: 80}}> 
         <h1>订单详情</h1>
         <Card style={{ boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)', paddingTop: 8, paddingBottom: 10 }}>
             {orderItems.map((good, index) => (

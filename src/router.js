@@ -8,6 +8,7 @@ import CategoryPage from "./Pages/CategoryPage";
 import GoodPage from "./Pages/GoodPage";
 import OrderSubmissionPage from "./Pages/OrderSubmissionPage";
 import OrderDetailsPage from "./Pages/OrderDetailsPage";
+import PayPage from "./Pages/PayPage";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: "order/:order_id",
                 element: <OrderDetailsPage />,
+            },
+            {
+                path: "pay/:order_id",
+                element: <PayPage />
             }
         ],
     },

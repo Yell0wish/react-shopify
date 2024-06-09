@@ -1,0 +1,19 @@
+.payment-component {
+    padding: 16px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.amount {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.payment-methods {
+    margin-bottom: 16px;
+}
+
+.confirm-button {
+    background-color: #ff4d4f;
+    color: #fff;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import '../../CSS/OrderDetails.css';
 
 const OrderDetails = ({ order }) => {
-    const { id, state, price, actual_price, submit_time, pay_time, address } = order;
+    const { id, state, price, actual_price, submit_time, pay_time, address, payment_method } = order;
 
     const getOrderState = (state) => {
         switch (state) {
@@ -18,6 +18,15 @@ const OrderDetails = ({ order }) => {
         if (!timestamp) return '未支付';
         const date = new Date(timestamp);
         return date.toLocaleString();
+    };
+
+    const getPaymentMethod = (method) => {
+        if (!method) return '未支付';
+        switch (method) {
+            case 'alipay': return '支付宝';
+            case 'wechat': return '微信支付';
+            default: return '其他支付方式';
+        }
     };
 
     return (
@@ -44,6 +53,10 @@ const OrderDetails = ({ order }) => {
                 <div className="order-row">
                     <span className="label">下单时间</span>
                     <span>{formatDate(submit_time)}</span>
+                </div>
+                <div className="order-row">
+                    <span className="label">支付方式</span>
+                    <span>{getPaymentMethod(payment_method)}</span>
                 </div>
             </div>
             <div className="address-info">

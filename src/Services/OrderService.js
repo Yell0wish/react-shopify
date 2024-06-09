@@ -2,7 +2,7 @@ const defaultList = [
     {
         id : '114514',
         user_id : 1,
-        state: 2, // 0: unpaid, 1: paid, 2: delivered 3: canceled
+        state: 0, // 0: unpaid, 1: paid, 2: delivered 3: canceled
         goods_list : [
             {
                 good_id : 1,
@@ -20,7 +20,8 @@ const defaultList = [
             phone: '12345678901',
             address: '广东省广州市天河区'
         
-        }
+        },
+        pay_way: null
     }
 ]
 
@@ -61,7 +62,8 @@ class OrderService {
             actual_price: actual_price,
             submit_time: new Date().getTime(),
             pay_time: null,
-            address: address
+            address: address,
+            pay_way: null
         });
         this.saveList();
         return id;
@@ -69,6 +71,19 @@ class OrderService {
 
     getOrder(id) {
         return this.list.find(order => order.id === id);
+    }
+
+    updateOrderState(orderId, state, pay_way) {
+        let order = this.list.find(order => order.id === orderId);
+        if (!order) {
+            return Promise.reject('订单不存在');
+        }
+        order.state = state;
+        if (pay_way) {
+            order.pay_way = pay_way;
+        }
+        this.saveList();
+        return Promise.resolve();
     }
 }
 
