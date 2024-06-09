@@ -40,7 +40,7 @@ const PaymentComponent = ({ orderId, amount, state }) => {
             });
             // 支付成功后的逻辑
             console.log('订单号:', orderId, '支付金额:', amount, '支付方式:', paymentMethod);
-            orderService.updateOrderState(orderId, 1, paymentMethod);
+            orderService.updateOrderState(orderId, 1, paymentMethod, new Date().getTime());
             navigate('/order/' + orderId);
         }, 2000);
     };

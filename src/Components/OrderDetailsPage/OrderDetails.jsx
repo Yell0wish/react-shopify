@@ -2,7 +2,7 @@ import React from 'react';
 import '../../CSS/OrderDetails.css';
 
 const OrderDetails = ({ order }) => {
-    const { id, state, price, actual_price, submit_time, pay_time, address, payment_method } = order;
+    const { id, state, price, actual_price, submit_time, pay_time, address, pay_way } = order;
 
     const getOrderState = (state) => {
         switch (state) {
@@ -56,7 +56,7 @@ const OrderDetails = ({ order }) => {
                 </div>
                 <div className="order-row">
                     <span className="label">支付方式</span>
-                    <span>{getPaymentMethod(payment_method)}</span>
+                    <span>{getPaymentMethod(pay_way)}</span>
                 </div>
             </div>
             <div className="address-info">
