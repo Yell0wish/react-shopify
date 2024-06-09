@@ -73,7 +73,7 @@ class OrderService {
         return this.list.find(order => order.id === id);
     }
 
-    updateOrderState(orderId, state, pay_way) {
+    updateOrderState(orderId, state, pay_way, pay_time) {
         let order = this.list.find(order => order.id === orderId);
         if (!order) {
             return Promise.reject('订单不存在');
@@ -81,6 +81,9 @@ class OrderService {
         order.state = state;
         if (pay_way) {
             order.pay_way = pay_way;
+        }
+        if (pay_time) {
+            order.pay_time = pay_time;
         }
         this.saveList();
         return Promise.resolve();

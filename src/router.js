@@ -10,6 +10,9 @@ import OrderSubmissionPage from "./Pages/OrderSubmissionPage";
 import OrderDetailsPage from "./Pages/OrderDetailsPage";
 import PayPage from "./Pages/PayPage";
 import SubcategoryPage from "./Pages/SubcategoryPage";
+import AddressPage from "./Pages/AddressPage";
+import OrdersPage from "./Pages/OrdersPage";
+
 
 const router = createBrowserRouter([
     { 
@@ -55,6 +58,14 @@ const router = createBrowserRouter([
             {
                 path: "subcategory/:subcategory_id",
                 element: <SubcategoryPage />
+            },
+            {
+                path: "address-management",
+                element: <AddressPage />
+            },
+            {
+                path: "orders/:state",
+                element: <OrdersPage />
             }
         ],
     },
