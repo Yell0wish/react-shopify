@@ -14,6 +14,7 @@ import AddressPage from "./Pages/AddressPage";
 import OrdersPage from "./Pages/OrdersPage";
 import searchResults from "./Pages/SearchResults";
 import SearchResultsPage from "./Pages/SearchResults";
+import RegisterPage from "./Pages/RegisterPage";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <LoginPage />,
+            },
+            {
+                path: 'register',
+                element: <RegisterPage />,
             },
             {
                 path: "my",

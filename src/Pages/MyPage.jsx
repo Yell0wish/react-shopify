@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Grid, Image, NavBar } from "antd-mobile";
+import {Button, Card, Grid, Image, NavBar, Toast} from "antd-mobile";
 import { useNavigate } from "react-router";
 import "../CSS/MyPage.css";
 import BottomNavBar from "../Components/BottomNavBar";
@@ -18,6 +18,15 @@ const MyPage = () => {
         // console.log(type);
         // 根据类型跳转到相应的页面
         navigate(`/${type}`);
+    };
+
+    const handleLogout = () => {
+        localStorage.clear();
+        Toast.show({
+            content: '已退出登录',
+            duration: 2000,
+        });
+        navigate('/');
     };
 
     return (
@@ -63,6 +72,11 @@ const MyPage = () => {
                     </Grid.Item>
                 </Grid>
             </Card>
+            <div className="logout-button-container">
+                <Button block color="danger" onClick={handleLogout}>
+                    退出登录
+                </Button>
+            </div>
             <BottomNavBar />
         </div>
     );
