@@ -127,7 +127,23 @@ class CartService {
         return false; // 表示删除失败
     
     }
+    clearCart(user_id) {
+        let userCart = this.list.find(cart => cart.user_id === user_id);
+        if (userCart) {
+            userCart.goods_list = [];
+            this.saveList();
+            return true; // 表示清空购物车成功
+        }
+        return false; // 表示清空购物车失败
 
+    }
+    getGoodList(user_id) {
+        let userCart = this.list.find(cart => cart.user_id === user_id);
+        if (userCart) {
+            return userCart.goods_list;
+        }
+        return [];
+    }
     getTotalPrice(user_id) {
         let userCart = this.list.find(cart => cart.user_id === user_id);
         if (userCart) {
