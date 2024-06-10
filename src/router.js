@@ -12,6 +12,8 @@ import PayPage from "./Pages/PayPage";
 import SubcategoryPage from "./Pages/SubcategoryPage";
 import AddressPage from "./Pages/AddressPage";
 import OrdersPage from "./Pages/OrdersPage";
+import searchResults from "./Pages/SearchResults";
+import SearchResultsPage from "./Pages/SearchResults";
 
 
 const router = createBrowserRouter([
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: "home",
                 element: <HomePage />,
+            },
+            {
+                path: 'search-results',
+                element: <SearchResultsPage />,
             },
             {
                 index: true,
