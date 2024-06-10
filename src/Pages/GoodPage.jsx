@@ -84,7 +84,7 @@ export default function GoodPage() {
                     </div>
                 </List.Item>
             </List>
-            <GoodBottomBar/>
+            <GoodBottomBar good={good}/>
         </div>
     );
 }
