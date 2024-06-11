@@ -22,7 +22,7 @@ export function getCurrentSubcategoryName() {
 
 export function getGoodsListbySubcategoryId(subcategory_id) {
     const goodsList = goodService.getList()
-    const ret = goodsList.filter(good => good.subcategory_id === subcategory_id)
+    const ret = goodsList.filter(good => good.subcategory_id == subcategory_id)
     // console.log(ret)
     return ret
 }
