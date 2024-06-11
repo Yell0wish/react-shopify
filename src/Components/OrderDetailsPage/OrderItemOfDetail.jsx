@@ -5,7 +5,7 @@ import '../../CSS/OrderItemOfDetail.css'; // 引入新的CSS文件
 
 const OrderItemOfDetail = ({ good }) => {
     const navigate = useNavigate();
-
+    console.log("price", good)
     const handleImageClick = () => {
         navigate(`/good/${good.good_id}`);
     };
@@ -30,7 +30,7 @@ const OrderItemOfDetail = ({ good }) => {
                                     <span className="count">数量: {good.count}</span>
                                 </Space>
                             </div>
-                            <div className="item-price">¥{good.goods_price * good.count}</div>
+                            <div className="item-price">¥{parseFloat(good.goods_price) * parseFloat(good.count)}</div>
                         </div>
                     </div>
                 }

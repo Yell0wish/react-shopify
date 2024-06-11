@@ -12,24 +12,15 @@ import PayPage from "./Pages/PayPage";
 import SubcategoryPage from "./Pages/SubcategoryPage";
 import AddressPage from "./Pages/AddressPage";
 import OrdersPage from "./Pages/OrdersPage";
-import searchResults from "./Pages/SearchResults";
 import SearchResultsPage from "./Pages/SearchResults";
 import RegisterPage from "./Pages/RegisterPage";
-
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
-    { 
+    {
         path: "/",
         element: <App />,
         children: [
-            {
-                path: "home",
-                element: <HomePage />,
-            },
-            {
-                path: 'search-results',
-                element: <SearchResultsPage />,
-            },
             {
                 index: true,
                 element: <LoginPage />,
@@ -39,44 +30,52 @@ const router = createBrowserRouter([
                 element: <RegisterPage />,
             },
             {
+                path: "home",
+                element: <ProtectedRoute element={<HomePage />} />,
+            },
+            {
+                path: 'search-results',
+                element: <ProtectedRoute element={<SearchResultsPage />} />,
+            },
+            {
                 path: "my",
-                element: <MyPage />,
+                element: <ProtectedRoute element={<MyPage />} />,
             },
             {
                 path: "cart",
-                element: <CartPage />,
+                element: <ProtectedRoute element={<CartPage />} />,
             },
             {
                 path: "category",
-                element: <CategoryPage />,
+                element: <ProtectedRoute element={<CategoryPage />} />,
             },
             {
                 path: "good/:id",
-                element: <GoodPage />,
+                element: <ProtectedRoute element={<GoodPage />} />,
             },
             {
                 path: "order-submit/:cart_id",
-                element: <OrderSubmissionPage />,
+                element: <ProtectedRoute element={<OrderSubmissionPage />} />,
             },
             {
                 path: "order/:order_id",
-                element: <OrderDetailsPage />,
+                element: <ProtectedRoute element={<OrderDetailsPage />} />,
             },
             {
                 path: "pay/:order_id",
-                element: <PayPage />
+                element: <ProtectedRoute element={<PayPage />} />
             },
             {
                 path: "subcategory/:subcategory_id",
-                element: <SubcategoryPage />
+                element: <ProtectedRoute element={<SubcategoryPage />} />
             },
             {
                 path: "address-management",
-                element: <AddressPage />
+                element: <ProtectedRoute element={<AddressPage />} />
             },
             {
                 path: "orders/:state",
-                element: <OrdersPage />
+                element: <ProtectedRoute element={<OrdersPage />} />
             }
         ],
     },

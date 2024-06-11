@@ -1,28 +1,28 @@
 const defaultList = [
-    {
-        id : '114514',
-        user_id : 1,
-        state: 0, // 0: unpaid, 1: paid, 2: delivered 3: canceled
-        goods_list : [
-            {
-                good_id : 1,
-                good_price : 99,
-                count : 1
-            }
-        ],
-        // 原价和实际价格
-        price : 99,
-        actual_price: 90,
-        submit_time: new Date().getTime(),
-        pay_time: null,
-        address: {
-            name: '张三',
-            phone: '12345678901',
-            address: '广东省广州市天河区'
-
-        },
-        pay_way: null
-    }
+    // {
+    //     id : '114514',
+    //     user_id : 1,
+    //     state: 0, // 0: unpaid, 1: paid, 2: delivered 3: canceled
+    //     goods_list : [
+    //         {
+    //             good_id : 1,
+    //             good_price : 99,
+    //             count : 1
+    //         }
+    //     ],
+    //     // 原价和实际价格
+    //     price : 99,
+    //     actual_price: 90,
+    //     submit_time: new Date().getTime(),
+    //     pay_time: null,
+    //     address: {
+    //         name: '张三',
+    //         phone: '12345678901',
+    //         address: '广东省广州市天河区'
+    //
+    //     },
+    //     pay_way: null
+    // }
 ]
 
 class OrderService {

@@ -33,7 +33,7 @@ const OrderSubmissionPage = () => {
 
     useEffect(() => {
         // 更新合计金额
-        setFinalAmount(totalPrice - discount - selectedCoupon + shippingFee);
+        setFinalAmount(Math.max((totalPrice - discount - selectedCoupon + shippingFee), 0));
     }, [totalPrice, discount, selectedCoupon, shippingFee]);
 
     const updateTotalPrice = (items) => {

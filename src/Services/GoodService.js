@@ -6,19 +6,14 @@ class GoodService {
     }
 
     async loadList() {
-        const list = localStorage.getItem('goodList');
-        if (list) {
-            this.list = JSON.parse(list);
-        } else {
-            try {
-                const response = await fetch('http://localhost:5000/api/products');
-                const data = await response.json();
-                console.log(data)
-                this.list = data;
-                this.saveList();
-            } catch (error) {
-                console.error('Error fetching products from backend:', error);
-            }
+        try {
+            const response = await fetch('http://localhost:5000/api/products');
+            const data = await response.json();
+            console.log(data)
+            this.list = data;
+            this.saveList();
+        } catch (error) {
+            console.error('Error fetching products from backend:', error);
         }
     }
 

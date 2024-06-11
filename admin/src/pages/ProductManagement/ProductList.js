@@ -4,6 +4,21 @@ import { SearchOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
+const defaultCategories = [
+    { name: "食品", subcategories: [{ name: "水果", subcategory_id: 1 }, { name: "其它", subcategory_id: 2 }], id: 1},
+    { name: "服装", subcategories: [{ name: "衣服", subcategory_id: 3 }, { name: "裤子", subcategory_id: 4 }, { name: "其它", subcategory_id: 5 }], id: 2},
+    { name: "手机数码", subcategories: [{ name: "电子产品", subcategory_id: 6 }], id: 3},
+    { name: "家具家装", subcategories: [
+            { name: "厨房卫浴", subcategory_id: 7 },
+            { name: "灯饰照明", subcategory_id: 8 },
+            { name: "五金工具", subcategory_id: 9 },
+            { name: "卧室家具", subcategory_id: 10 },
+            { name: "客厅家具", subcategory_id: 11 }
+        ], id: 4},
+    { name: "汽车用品", subcategories: [{ name: "汽车用品", subcategory_id: 12 }],id: 5},
+    { name: "其它", subcategories: [{ name: "其它", subcategory_id: 13 }], id: 6 }
+];
+
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -168,9 +183,13 @@ const ProductList = () => {
                         rules={[{ required: true, message: '请选择分类' }]}
                     >
                         <Select>
-                            {/* 示例分类 */}
-                            <Option value="1">分类一</Option>
-                            <Option value="2">分类二</Option>
+                            {defaultCategories.map(category => (
+                                category.subcategories.map(subcategory => (
+                                    <Option key={subcategory.subcategory_id} value={subcategory.subcategory_id}>
+                                        {category.name} - {subcategory.name}
+                                    </Option>
+                                ))
+                            ))}
                         </Select>
                     </Form.Item>
                     <Form.Item

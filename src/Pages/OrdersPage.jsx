@@ -39,7 +39,7 @@ export default function OrdersPage() {
             // 数字转换为文字
             status: order[i].state === 0 ? "待付款" : order[i].state === 1 ? "待收货" : order[i].state === 2 ? "已发货" : "已取消",
             totalQuantity: count,
-            totalCost: order[i].actual_price
+            totalCost: Math.max(order[i].actual_price, 0)
         };
         roughItems.push(roughItem);
     }
