@@ -5,6 +5,8 @@ import Dashboard from "./pages/DashBoard/Dashboard";
 
 import PrivateRoute from './PrivateRoute';
 import UserList from "./pages/UserManagement/UserList";
+import OrderList from "./pages/OrderManagement/OrderList";
+import ProductList from "./pages/ProductManagement/ProductList";
 
 const router = createBrowserRouter([
     {
@@ -41,11 +43,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "products",
-                element: <div>商品页面</div>,
+                element: <ProductList />,
             },
             {
                 path: "orders",
-                element: <div>订单页面</div>,
+                element: <OrderList />,
             },
             {
                 path: "marketing",
